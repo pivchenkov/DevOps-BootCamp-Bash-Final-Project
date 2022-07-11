@@ -15,7 +15,7 @@
 #   1 on error
 #######################################
 upload() {
-  for arg in $@; do
+  for arg in "$@"; do
     echo "Uploading $arg"
     curl_output=$(curl --progress-bar --upload-file ./$arg `
     ` https://transfer.sh/$arg) && echo "Transfer File URL: $curl_output"`
@@ -97,15 +97,15 @@ help() {
 #######################################
 main() {
   if [[ $1 == "-d" ]]; then
-    single_download $@
+    single_download "$@"
   elif [[ $1 == "-h" ]]; then
     help
   elif [[ $1 == "-v" ]]; then
     echo "0.0.1"
   else
-    upload $@
+    upload "$@"
   fi
 }
 
 
-main $@
+main "$@"
