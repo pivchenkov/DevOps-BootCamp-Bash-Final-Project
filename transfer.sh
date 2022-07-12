@@ -103,7 +103,7 @@ main() {
   elif [[ $1 == "-h" ]]; then
     help
   elif [[ $1 == "-v" ]]; then
-    echo "0.0.1"
+    echo "1.23.0"
   else
     upload "$@"
   fi
