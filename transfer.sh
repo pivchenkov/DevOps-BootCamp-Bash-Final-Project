@@ -17,10 +17,8 @@
 upload() {
   for arg in "$@"; do
     echo "Uploading $arg"
-#    curl_output=$(curl --progress-bar --upload-file ./$arg `
-#    ` https://transfer.sh/$arg) && echo "Transfer File URL: $curl_output"`
-#    ` || return 1
-    curl_output=$(curl --progress-bar --upload-file ./$arg https://transfer.sh/$arg) && echo "Transfer File URL: $curl_output" || return 1
+    file_name=$(basename $arg)
+    curl_output=$(curl --progress-bar --upload-file "$arg" https://transfer.sh/$file_name) && echo "Transfer File URL: $curl_output" || return 1
   done
 }
 
@@ -39,8 +37,9 @@ upload() {
 #######################################
 single_download() {
   echo "Downloading $4"
-#  http_code=$(curl --progress-bar --write-out "%{http_code}" `
-#  ` https://transfer.sh/$3"/"$4 --output $2"/"$4)
+
+  [[ -d $2 ]] || mkdir -p $2
+
   http_code=$(curl --progress-bar --write-out "%{http_code}" https://transfer.sh/$3"/"$4 --output $2"/"$4)
   print_download_response $http_code || return 1
 }
