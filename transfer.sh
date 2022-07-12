@@ -78,14 +78,15 @@ print_download_response() {
 #   Writes help information to stdout
 #######################################
 help() {
-  echo "Description: Bash tool to transfer files from the command line.
-  Usage:
-    -d  ...
-    -h  Show the help ... 
-    -v  Get the tool version
-  Examples:
-  <Write a couple of examples, how to use your tool>
-  ./transfer.sh test.txt ..."
+
+  echo "Description: Bash tool to transfer files from the command line."
+  echo "Usage:"
+  echo "-d  ..."
+  echo "-h  Show the help ..."
+  echo "-v  Get the tool version"
+  echo "Examples:"
+  echo "<Write a couple of examples, how to use your tool>"
+  echo "./transfer.sh test.txt ..."
 }
 
 #######################################
